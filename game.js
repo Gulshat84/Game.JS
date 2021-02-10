@@ -10,25 +10,27 @@ let isNumber = function(n) {
 
 let gameFunction = function() {
   let num = 63;
-  let userNumber = +prompt('Введите число');
+  let userNumber = prompt('Введите число');
 
-  if (isNaN(userNumber) || userNumber === '') {
-    userNumber = alert('Введите число!!!');
-    userNumber = +prompt('Попробуйте ввести другое число');
-    
-  } else if (userNumber > num) {
+  return function() {
+    if (isNaN(userNumber)) {
+    userNumber = prompt('Введите число!!!');
+  
+  } else if (+userNumber > num) {
     alert('Загаданное число меньше');
-    userNumber = +prompt('Попробуйте ввести другое число');
+    userNumber = prompt('Попробуйте ввести другое число');
 
-  } else if (userNumber < num) {
+  } else if (+userNumber < num) {
     alert('Загаданное число больше');
-    userNumber = +prompt('Попробуйте ввести другое число');
+    userNumber = prompt('Попробуйте ввести другое число');
 
-  } else if (userNumber === num) {
+  } else if (+userNumber === num) {
     userNumber = alert('Поздравляю, Вы угадали!!!');
     
   } else if (userNumber === null) {
     alert('Игра окончена');  
   }
 };
-gameFunction();
+};
+let play = gameFunction();
+play();
